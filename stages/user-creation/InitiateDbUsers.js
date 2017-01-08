@@ -18,8 +18,8 @@ load('users.js');
 
 // adding read-write user
 var currentDbName = "taskcat";
-currentDbName = conn.getDB(currentDbName);
-currentDbName.dropAllUsers();
+currentDb = conn.getDB(currentDbName);
+currentDb.dropAllUsers();
 
 for(i=0; i<users.length; i++)
 {
@@ -27,7 +27,7 @@ for(i=0; i<users.length; i++)
     {
         users[i].roles[j].db = currentDbName;
     }
-    currentDbName.createUser(users[i]);
+    currentDb.createUser(users[i]);
     db.createUser(users[i]);
 }
 print('\n\n');
