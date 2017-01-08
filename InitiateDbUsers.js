@@ -2,7 +2,7 @@
 var conn = new Mongo('localhost:27017');
 var db = conn.getDB('admin');
 
-load('adminusers.js');
+load('admin-users.js');
 
 for (admin in adminusers)
 {
