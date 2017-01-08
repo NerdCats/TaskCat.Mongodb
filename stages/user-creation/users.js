@@ -1,6 +1,6 @@
 var users = [
         {
-            user: "gobdroot",
+            user: "gobd",
             pwd: "Beattraffic1",
             roles: [
                 { role: "readWrite", db: "" }
