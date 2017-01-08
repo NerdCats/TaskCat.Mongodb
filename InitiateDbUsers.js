@@ -30,3 +30,6 @@ for(i=0; i<users.length; i++)
 
     db.createUser(users[i]);
 }
+print('\n\n');
+print('**USER ADDITION COMPLETED**');
+
