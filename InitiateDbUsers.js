@@ -2,6 +2,9 @@
 var conn = new Mongo('localhost:27017');
 var db = conn.getDB('admin');
 
+console.log('**DROPPING ALL USERS**');
+db.dropAllUsers();
+
 load('admin-users.js');
 
 for (i=0; i<adminusers.length; i++)
@@ -11,15 +14,15 @@ for (i=0; i<adminusers.length; i++)
 
 load('users.js');
 
-// do for each database we want to fix add a readwrite user
+// adding read-write user
 var currentDb = "taskcat";
 db = conn.getDB(currentDb);
 
 for(i=0; i<users.length; i++)
 {
-    for(j=0; j<user[i].roles.length; j++)
+    for(j=0; j<users[i].roles.length; j++)
     {
-        user[i].roles[j].db = currentDb;
+        users[i].roles[j].db = currentDb;
     }
 
     db.createUser(users[i]);
