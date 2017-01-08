@@ -2,9 +2,10 @@
 var conn = new Mongo('localhost:27017');
 var db = conn.getDB('admin');
 
-console.log('**DROPPING ALL USERS**');
+print('**DROPPING ALL USERS**');
 db.dropAllUsers();
 
+print('**ADDING ADMIN USERS**');
 load('admin-users.js');
 
 for (i=0; i<adminusers.length; i++)
@@ -12,11 +13,13 @@ for (i=0; i<adminusers.length; i++)
     db.createUser(adminusers[i]);
 }
 
+print('**ADDING DATABASE USERS**');
 load('users.js');
 
 // adding read-write user
 var currentDb = "taskcat";
 db = conn.getDB(currentDb);
+db.dropAllUsers();
 
 for(i=0; i<users.length; i++)
 {
