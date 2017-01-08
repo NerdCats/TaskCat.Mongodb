@@ -17,17 +17,17 @@ print('**ADDING DATABASE USERS**');
 load('users.js');
 
 // adding read-write user
-var currentDb = "taskcat";
-db = conn.getDB(currentDb);
-db.dropAllUsers();
+var currentDbName = "taskcat";
+currentDbName = conn.getDB(currentDbName);
+currentDbName.dropAllUsers();
 
 for(i=0; i<users.length; i++)
 {
     for(j=0; j<users[i].roles.length; j++)
     {
-        users[i].roles[j].db = currentDb;
+        users[i].roles[j].db = currentDbName;
     }
-
+    currentDbName.createUser(users[i]);
     db.createUser(users[i]);
 }
 print('\n\n');
