@@ -4,9 +4,9 @@ var db = conn.getDB('admin');
 
 load('admin-users.js');
 
-for (admin in adminusers)
+for (i=0; i<adminusers.length; i++)
 {
-    db.createUser(admin);
+    db.createUser(adminusers[i]);
 }
 
 load('users.js');
